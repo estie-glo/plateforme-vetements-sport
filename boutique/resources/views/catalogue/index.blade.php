@@ -2,7 +2,7 @@
 @section('titre', 'Nos produits')
 @section('contenu')
 <h1>Nos produits</h1>
-<form class="filtres" method="GET" action="{{ url('/produits') }}">
+<form class="filtres" autocomplete="off" method="GET" action="{{ url('/produits') }}">
   <div class="grille">
     <div><label for="q">Recherche</label><input type="text" id="q" name="q" value="{{ $q }}" placeholder="Ex : maillot, ballon..."></div>
     <div><label for="sport">Sport</label>
