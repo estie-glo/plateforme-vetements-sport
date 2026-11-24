@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CatalogueController;
 use App\Http\Controllers\CommandeController;
+use App\Http\Controllers\PaiementController;
 use App\Http\Controllers\PanierController;
 use App\Http\Controllers\ProfilController;
 
@@ -37,6 +38,11 @@ Route::middleware('auth')->group(function () {
     Route::post('/commande', [CommandeController::class, 'valider'])->name('commande.valider');
     Route::get('/commandes', [CommandeController::class, 'index'])->name('commandes.index');
     Route::get('/commandes/{id}', [CommandeController::class, 'show'])->name('commandes.show');
+
+    // Paiement Mobile Money simulé (L4)
+    Route::get('/commandes/{id}/paiement', [PaiementController::class, 'form'])->name('paiement.form');
+    Route::post('/commandes/{id}/paiement', [PaiementController::class, 'payer'])->name('paiement.payer');
+    Route::get('/commandes/{id}/paiement/confirmation', [PaiementController::class, 'confirmation'])->name('paiement.confirmation');
 
     // Back-office administrateur (L6)
     Route::prefix('admin')->group(function () {
